@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} Create a New User {% endblock %}
+
+{% block content %}
+
+  <div class="container  ">
+  <h1> Add Post for User:' {{user.first_name}} {{user.last_name}} '</h1>
+  <form method="POST">
+      <div>
+      <div></dv><label for="title">Title</label></div>
+      <input type="text" id="title" name="title" placeholder="Enter Title here">
+      </div>
+      <br>
+
+
+      <div>
+       <div> <label for="content">Content</label></div>
+        
+        <textarea type="text" id="content" name="content" placeholder="Content goes here"></textarea>
+      </div>
+      {% for tag in tags %}
+      <div >
+        
+        <input class="form_check-input"
+                type="checkbox" 
+                value="{{tag.id}}"
+                name="tags"
+                id="tag_{{tag.id}}">
+        <label for="tag_{{tag.id}}"
+        class="form_check-label"> {{tag.name}}</label>
+      </div>
+      {% endfor %}
+   
+
+
+      <div>
+          
+          <a href="/users/{{user.id}}"> Cancel</a>
+          <br>
+          <button type="submit" class="btn btn-sm btn-danger" > Add</button>
+          
+      </div>
+  </form>
+
+</div>
+{% endblock %}

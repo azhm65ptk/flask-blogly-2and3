@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Create a New User {% endblock %}
+
+{% block content %}
+
+  
+  <h1> Create a tags </h1>
+  
+  <form method="POST">
+      <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter a name for the tag">
+      </div>
+
+      <div class="form-check form-group row">
+        {% for post in posts %}
+            <div>
+              <input class="form-input"
+                      type="checkbox"
+                      value="{{post.id}}"
+                      id="post_{{post.id}} "
+                      name="posts">
+
+            
+            <label for="post_{{post.id}}" > {{post.title}}</label>
+          </div> 
+        {% endfor %}
+
+
+      </div>
+
+      
+
+      <div>
+          <a href="/tags"> Cancel</a>
+          <br>
+          <button type="submit" class="btn btn-sm btn-danger" > Add</button>       
+      </div>
+  </form>
+
+  
+{% endblock %}

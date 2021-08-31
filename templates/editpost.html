@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+
+
+
+<div class="container container-fluid">
+<h1> Edit Post </h1>
+
+<form method="POST">
+  <div>
+   <div> <label for="title">Title</label></div>
+    <input type="text" id="title" name="title" value="{{post.title}}">
+  
+  <br>
+  <br>
+  <div>
+    <label for="content">Post Content</label></div>
+    <textarea type="text" id="content" name="content" value="{{post.content}}">{{post.content}}</textarea>
+  
+
+  {% for tag in tags %}
+  <div>
+    <input class="form_check-input"
+           type="checkbox" 
+            value="{{tag.id}}" 
+            id="tag_{{tag.id}}"
+            {% if tag in post.tags %} checked {% endif %}
+            name="tags"
+      >
+    <label class="form-check-label" for="tag_{{tag.id}}">{{tag.name}}</label>
+  </div>
+  {% endfor %}
+
+  <div>
+    <a href="/users/{{post.user_id}}" class="btn btn-primary">Cancel</a>
+    <button type="submit" class="btn btn-danger">Save</button>
+  </div>
+</form>
+
+</div>
+
+{% endblock %}
